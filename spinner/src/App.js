@@ -3,14 +3,18 @@ import './App.css';
 import Landing from './pages/Landing';
 import bg from './assets/pc-bg1.png';
 import bg1 from './assets/pc-bg2.png';
+import Game from './pages/Game';
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 function App() {
   return (
       <>
         <div
-          style={{
+          style={{          
             backgroundImage: `url(${bg1})`,
+            backgroundColor: '#CADB7F',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'repeat-y',
@@ -19,9 +23,13 @@ function App() {
             backdropFilter: 'blur(10px)',
           }}
         >
-            <Landing/>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/game" element={<Game />} />
+            </Routes>
+          </BrowserRouter>
         </div>
-        
       </>
   );
 }

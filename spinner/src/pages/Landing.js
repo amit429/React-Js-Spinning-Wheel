@@ -1,9 +1,38 @@
 import React from 'react'
 import './Landing.css'
 import wheel from '.././assets/wheel.png'
-import { useState } from 'react'
+import {
+    useState
+} from 'react'
+import { useNavigate } from "react-router-dom";
+
+import {
+    Box,
+    Button,
+    Image,
+    Flex,
+    IconButton,
+    InputGroup,
+    InputLeftElement,
+    Input,
+    InputRightElement,
+    Text,
+    Stack,
+    InputLeftAddon,
+    FormControl,
+    FormLabel,
+    Checkbox
+} from '@chakra-ui/react';
+import {
+    SearchIcon,
+    ArrowForwardIcon,
+    PhoneIcon,
+    EmailIcon,
+} from '@chakra-ui/icons'
 
 export default function Landing() {
+
+    const navigate = useNavigate();
 
     const [tick, setTick] = useState("false");
     const [email, setEmail] = useState("");
@@ -14,11 +43,13 @@ export default function Landing() {
        if(email === "" || phone === "") {
             window.alert("Please enter your email address")
         }
-        else if (tick === "false") {
-            window.alert("Please tick the box to continue")
-        }
+        // else if (tick === "false") {
+        //     window.alert("Please tick the box to continue")
+        // }
           else{
             window.alert("Thank you for your submission")
+            navigate("/game")
+            
         }  
     }
 
@@ -44,97 +75,78 @@ export default function Landing() {
 
   return (
     <>
-        
-    <div className="landing"
-         style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            width: '70vw',
-            margin: 'auto',
-         }}
-       >
-             <div class="flex-1 w-64 ..."
-                style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    display: 'flex',
-                }}
-             >
-                <img src={wheel} alt="wheel" width= "400px" height= "400px" />
-            </div>
+        <Box flexFlow={1} flexWrap="wrap" className='main'>
+            <Box className='wheel'>
+                <Image w={400} h={400} src={wheel} alt="wheel" className='wheel' />
+            </Box>
+            <Box className='form'>
+                <Text fontSize={['xl', 'md', 'lg', '2xl']} fontWeight="bold" className='title'>
+                    This is how EngageBud <br/> looks like in action!
+                </Text>
+                <Stack className='form-input' spacing={5}>
+                    <InputGroup>
+                        <InputLeftElement children={<EmailIcon/>} />
+                        <Input type='email' placeholder='joe@gmail.com'
+                            backgroundColor={'white'}
+                            borderRadius="3px"
+                            borderBottom={'1.5px solid black'}
+                            w={300}
+                            onChange={(e) => setEmail(e.target.value)}
+                            
+                        />
+                    </InputGroup>
 
-            <div class="flex-1 w-32 ..."
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    textAlign: 'left',
-                    padding: '20px',
-                }}
-            >
-                <h1 
-                    style={{
-                         fontSize: '25px',
-                         fontWeight: '700',
-                         lineHeight: '1.2',
-                         textAlign: 'left',
-                    }}
-                    >
-                        This is how EngageBud<br/> looks like in action!
-                    </h1>
+                    <InputGroup>
+                        <InputLeftElement children={<PhoneIcon/>} />
+                        <Input type='tel' placeholder='+91 98256 XXXXX'
+                            backgroundColor={'white'}
+                            borderRadius="none"
+                            w={300}
+                            borderBottom={'1.5px solid black'}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
+                    </InputGroup>
+                </Stack>
 
-                    <div class="relative mb-6 mt-6">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                             <svg aria-hidden="true" class="w-5 h-5 text-black-500 dark:text-black-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
-                    </div>
-                    <input type="text" id="input-group-1" 
-                    class="bg-white-50   text-black-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-7/12 pl-10 p-2.5  dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com"
-                    onChange={(e) => setEmail(e.target.value)}
-                    />
-                    </div>
+                <Checkbox
+                    colorScheme="green"
+                    className='checkbox'
+                    border="2px"
+                    p={1}
+                    mt={3}
+                    w={[250, 250, 300, 310]}
+                >
+                    <span className='check'>
+                    I agree to receiving recurring automated messages at the number I have provided.
+                    Consent is not a condition to purchase.
+                    </span>
+                    
+                </Checkbox>
 
-                    <div class="relative mb-6">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                        </svg>
+                <Button 
+                    mt={5} 
+                    borderRadius="50px" 
+                    bg={'#146531'} 
+                    colorScheme='green'
+                    fontSize={'2xl'}
+                    w={[250, 250, 300, 310]}
+                    onClick={check}
+                >
+                        Try your luck
+                </Button>
 
-                    </div>
-                    <input type="text" id="input-group-1" 
-                    class="bg-white-50  text-black-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-7/12 pl-10 p-2.5  dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="91+ 9822xxxxxx"
-                    onChange={(e) => setPhone(e.target.value)}
-                    />
-                    </div>
-
-                    <div class="flex items-center mb-3 w-7/12 border border-black p-2" >
-                        <div class="flex items-center h-5">
-                            <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required
-                            onClick={() => setTick("true")}
-                            />
-                        </div>
-                            <label for="remember" class="ml-2 text-sm font-sm text-black dark">I agree to receiving recurring automated messages at the number I have provided. Consent is not a condition to purchase.
-                            </label>
-                    </div>
-
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-7/12  "
-                        onClick={check}
-                    >
-                        Default
-                    </button>
-                    <p class="text-sm w-7/12"
-                        style = {{
-                            fontSize: '7px'
+                <Box className='disclaimer'>
+                    <span
+                        style={{
+                            fontSize: '8px',
                         }}
                     >
-                    *You can spin the wheel only once! *If you win, you can claim your coupon for 10 minutes only!
-                    </p>
-            </div>
-         </div>
+                        *You can spin the wheel only once! *If you win, you can claim your coupon for 10 minutes only!
+                    </span>
+                </Box>
+            </Box>
+        </Box>
+
     </>
   );
 }
