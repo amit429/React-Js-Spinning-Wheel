@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .spin-point{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: blue;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 2px solid rgba(0, 0, 0, 0.75);
+    user-select: none;
+}
+
+.container .spin-point::before{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 30px;
+    top: -25px;
+    background-color: blue;
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+.container .wheel{
+    position: absolute;
+    width: 100%;
+    height: 100%;  
+    transition: transform 5s ease-in-out;
+}
+
+.container .wheel .content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+}
