@@ -3,7 +3,9 @@ import React from 'react'
 import WheelComponent from "react-wheel-of-prizes";
 import { useState } from 'react';
 import spin from '../assets/spin.png';
+import ad from '.././assets/ad.png'
 import './Game.css';
+import './Landing.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function Game() {
@@ -14,7 +16,7 @@ export default function Game() {
 
     const rotate = () => {
 
-      let wheel = document.querySelector('.wheel');
+      let wheel = document.querySelector('.wheel1');
       let value = Math.floor(Math.random() * 3600);
       wheel.style.transform = `rotate(${value}deg)`;
       value += Math.floor(Math.random() * 3600);
@@ -33,6 +35,7 @@ export default function Game() {
 
   return (
 
+    <Box className='game'>
         <Box
           style={{
             display: 'flex',
@@ -45,7 +48,7 @@ export default function Game() {
         >
           <Box className='container'>
             <Box className='spin-point'></Box>
-            <Box className='wheel'>
+            <Box className='wheel1'>
               <Box className='content'>
                 <img src={spin} alt='wheel' width="100%" height="100%" />
               </Box>
@@ -53,9 +56,14 @@ export default function Game() {
           </Box>
           <Button
             onClick={rotate}
-            mt={10}
+            className='spin-btn'
+            mt={[1, 1, 1, 10]}
           >Spin</Button>
 
         </Box>
+        <Box className='add'>
+                <Image className='add-img'  src={ad} alt="advertisment" />
+          </Box>
+      </Box>
   )
 }

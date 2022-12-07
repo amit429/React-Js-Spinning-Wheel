@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import './Landing.css'
+import ad from '.././assets/ad.png'
 import wheel from '.././assets/wheel.png'
 import { useNavigate } from "react-router-dom";
 import { useClipboard } from '@chakra-ui/react'
@@ -127,12 +128,13 @@ export default function Result() {
                 </Stack>
 
                 <Button 
+                     className='button'
                     mt={5} 
                     borderRadius="50px" 
                     bg={'#146531'} 
                     colorScheme='green'
-                    fontSize={'2xl'}
-                    w={[250, 250, 300, 310]}
+                    fontSize={['sm', 'md', 'lg', '2xl']}
+                    w={[250, 250, 200, 310]}
                     onClick={() => {
                         navigate('/');
                         window.localStorage.clear();
@@ -155,6 +157,9 @@ export default function Result() {
                         **You can claim your coupon for 10 minutes only!
                     </span>
                 </Box>
+            </Box>
+            <Box className='add'>
+                <Image className='add-img'  src={ad} alt="advertisment" />
             </Box>
         </Box>
 

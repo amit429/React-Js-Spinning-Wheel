@@ -1,6 +1,7 @@
 import React from 'react'
 import './Landing.css'
 import wheel from '.././assets/wheel.png'
+import ad from '.././assets/ad.png'
 import {
     useState
 } from 'react'
@@ -53,6 +54,7 @@ export default function Landing() {
         }  
     }
 
+    //API call for email and phone
     //post email and phone to database
     // const post = async () => {
 
@@ -98,7 +100,7 @@ export default function Landing() {
 
                     <InputGroup>
                         <InputLeftElement children={<PhoneIcon/>} />
-                        <Input type='tel' placeholder='+91 98256 XXXXX'
+                        <Input type='number' placeholder='+91 98256 XXXXX'
                             backgroundColor={'white'}
                             borderRadius="none"
                             w={300}
@@ -114,7 +116,7 @@ export default function Landing() {
                     border="2px"
                     p={1}
                     mt={3}
-                    w={[250, 250, 300, 310]}
+                    w={[250, 250, 210, 310]}
                 >
                     <span className='check'>
                     I agree to receiving recurring automated messages at the number I have provided.
@@ -124,12 +126,13 @@ export default function Landing() {
                 </Checkbox>
 
                 <Button 
+                    className='button'
                     mt={5} 
                     borderRadius="50px" 
                     bg={'#146531'} 
                     colorScheme='green'
-                    fontSize={'2xl'}
-                    w={[250, 250, 300, 310]}
+                    fontSize={['md', 'md', 'lg', '2xl']}
+                    w={[250, 250, 200, 310]}
                     onClick={check}
                 >
                         Try your luck
@@ -144,6 +147,9 @@ export default function Landing() {
                         *You can spin the wheel only once! *If you win, you can claim your coupon for 10 minutes only!
                     </span>
                 </Box>
+            </Box>
+            <Box className='add'>
+                <Image className='add-img'  src={ad} alt="advertisment" />
             </Box>
         </Box>
 
