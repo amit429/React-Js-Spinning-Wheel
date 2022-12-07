@@ -33,7 +33,7 @@
 /* responsive */
 @media screen and (max-width: 468px) {
     .form{
-        width: 80%;
+        width: 95%;
     }
 
     .form-input{
